@@ -1,0 +1,31 @@
+{
+  "name": "ledgerstream-cli",
+  "version": "0.0.1",
+  "description": "CLI for LedgerStream, a cross-chain amalgamation of blockchain content (streams)",
+  "main": "index.js",
+  "scripts": {
+    "test": "yarn start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/signal-k/ls-cli.git"
+  },
+  "keywords": [
+    "ledger",
+    "stream",
+    "etoro",
+    "chain",
+    "content",
+    "blockchain"
+  ],
+  "author": "Liam Arbuckle, Hamish Blanchard",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/signal-k/ls-cli/issues"
+  },
+  "homepage": "https://github.com/signal-k/ls-cli#readme",
+  "dependencies": {
+    "chalk": "^5.0.0",
+    "figlet": "^1.5.2"
+  }
+}
