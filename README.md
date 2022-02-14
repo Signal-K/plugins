@@ -22,9 +22,21 @@ Variables at start:
 
 # CLI/App flow
 1. User selects chain, inputs the wallet address they want to track
+<!-- Do we verify if the address is the correct for the selected chain?
+-->
 2. CLI pulls information from relevant data source (STREAM)
 
 <!-- Let's look into pros & cons of anonymity vs inputting their account, authenticating it somehow etc -->
+
+<!--Action points
+ KEYBASE
+TERMINAL
+GIFT
+CONTRIBUTORS
+JAZZ UP CLI -> animations, minigames (while waiting) etc
+
+
+ORGANISATION ORGANISATION ORGANISATION OF FILES & EXPLANATION IN DOCUMENTATION-->
 
 ## Data Sources
 ### Bitcoin/Litecoin

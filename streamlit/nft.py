@@ -15,7 +15,7 @@ if endpoint == 'Assets':
     if owner:
         params['owner'] = owner
 
-    r = requests.get("https://api.opensea.io/api/v1/assets", params=parems)
+    r = requests.get("https://api.opensea.io/api/v1/assets", params=params)
 
     response = r.json()
 
