@@ -2,8 +2,8 @@ const chalk = require('chalk');
 const clear = require('clear');
 const figlet = require('figlet');
 
-const account = ""; // The user's wallet address
-const chain = ""; // Ethereum (Main, Polygon, Testnet) -> Solana -> Cardano
+let account = ""; // The user's wallet address
+let chain = ""; // Ethereum (Main, Polygon, Testnet) -> Solana -> Cardano
 
 console.log(chalk.red("Welcome to the CLI for") + chalk.green("LedgerStream"));
 // Offer user instruction (select chain)

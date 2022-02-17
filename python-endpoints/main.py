@@ -1,54 +1,28 @@
-# from __future__ import print_function
-# import os
-# import requests
-# from bs4 import BeautifulSoup
-# import csv
-# import time
+import json 
+import time 
+import requests
+import pandas as pd
 
-# RESULTS = "results.csv"
-# URL = "https://etherscan.io/token/generic-tokenholders2?a=0x6425c6be902d692ae2db752b3c268afadb099d3b&s=0&p="
-
-# def getData(sess, page):
-#     url = URL + page
-#     print("Retrieving page", page)
-#     return BeautifulSoup(sess.get(url).text, 'html.parser')
-
-# def getPage(sess, page):
-#     table = getData(sess, str(int(page))).find('table')
-#     return [[X.text.strip() for X in row.find_all('td')] for row in table.find_all('tr')]
-
-# def main():
-#     resp = requests.get(URL)
-#     sess = requests.Session()
-
-#     with open(RESULTS, 'wb') as f:
-#         wr = csv.writer(f, quoting=csv.QUOTE_ALL)
-#         wr.writerow(map(str, "Rank Address Quantity Percentage".split()))
-#         page = 0
-#         while True:
-#             page += 1
-#             data = getPage(sess, page)
-
-#             # Even pages that don't contain the data we're
-#             # after still contain a table.
-#             if len(data) < 4:
-#                 break
-#             else:
-#                 for row in data:
-#                     wr.writerow(row)
-#                 time.sleep(1)
-
-# if __name__ == "__main__":
-#     main()
-
-
-from etherscan import Etherscan
-
+# We get 1 call every 10 seconds with calls up to 10000 instances long with this 
+# API key
 eth_api_key = 'QNB7WTVMDT1M6KFVRN2458GFUGIHEIKBX1'
-eth - Etherscan(eth_api_key)
 
-def get_balance(wallet_address:str): 
-    return float(eth.get_eth_balance(wallet_address)/1e18)
+def get_last_block():
+    """Self explnatory """
+    return int(json.loads(requests.get(
+        f"https://api.etherscan.io/api?module=block&action=getblocknobytime&timestamp={round(time.time())}&closest=before&apikey={eth_api_key}"
+    ).text)["result"])
 
-def acct_balance_token_and_contract(contract:str, address:str, blockno:int):
-    return eth.get_acc_balance_by_token_and_contract_address(contract, address, blockno)
+def get_last_txs(address, no_of_transactions):
+    """generate list of last transactions from address according to no_of_transactions"""
+    return json.loads(requests.get(
+        f"https://api.etherscan.io/api?module=account&action=txlist&address={address}&startblock={get_last_block() - no_of_transactions}&sort=asc&apikey={eth_api_key}"
+    ).text)["result"] 
+    
+
+def main(address = '0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D', no_of_transactions = 2): 
+    txs = get_last_txs(address, no_of_transactions)
+    return pd.DataFrame(txs)
+
+if __name__ == "__main__":
+    main()
