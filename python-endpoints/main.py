@@ -8,7 +8,7 @@ import pandas as pd
 eth_api_key = 'QNB7WTVMDT1M6KFVRN2458GFUGIHEIKBX1'
 
 def get_last_block():
-    """Self explnatory """
+    """Self explanatory"""
     return int(json.loads(requests.get(
         f"https://api.etherscan.io/api?module=block&action=getblocknobytime&timestamp={round(time.time())}&closest=before&apikey={eth_api_key}"
     ).text)["result"])
