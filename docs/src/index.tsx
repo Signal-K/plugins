@@ -2,6 +2,7 @@ import * as esbuild from 'esbuild-wasm';
 import { useState, useEffect, useRef } from 'react';
 import ReactDOM from 'react-dom';
 import { start } from 'repl';
+import { unpkgPathPlugin } from './plugins/unpkg-path-plugin';
 
 const App = () => {
     const ref = useRef<any>();
@@ -35,13 +36,15 @@ const App = () => {
         }
 
         //console.log(ref.current);
-        const result = await ref.current.transform(input, {
-            loader: 'jsx', // Use JSX loader -> the code in the input will be transpiled to/as JSX
-            target: 'es2015'
-        });
-
+        const result = await ref.current.build({
+            entryPoints: ['index.js'],
+            bundle: true,
+            write: false,
+            plugins: [unpkgPathPlugin()],
+        })
         console.log(result);
-        setCode(result.code); // update code piece of state. This will be the code that is bundled. Page reloads and the code is rendered in the pre.
+
+        setCode(result.outputFiles[0].text); // update code piece of state. This will be the code that is bundled. Page reloads and the code is rendered in the pre.
     };
 
     return <div>
