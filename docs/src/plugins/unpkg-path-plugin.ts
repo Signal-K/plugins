@@ -73,7 +73,7 @@ export const unpkgPathPlugin = () => {
                     resolveDir: new URL('./', request.responseURL).pathname, // resolveDir - the directory of the file retrieved
                 }
                 // store response in cache 2
-                await fileCache.setItem(args.path, result);
+                await fileCache.setItem(args.path, result); // args.path is the key
                 return result;
             });
         },
