@@ -29,14 +29,12 @@ const App = () => {
 
     // Event handler for submit function
     const onClick = async () => {
-        console.log(input);
 
         // Don't transpile until service is initialised
         if (!ref.current) {
             return;
         }
 
-        //console.log(ref.current);
         const result = await ref.current.build({
             entryPoints: ['index.js'],
             bundle: true,
