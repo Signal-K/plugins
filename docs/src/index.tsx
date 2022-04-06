@@ -3,6 +3,7 @@ import { useState, useEffect, useRef } from 'react';
 import ReactDOM from 'react-dom';
 import { start } from 'repl';
 import { unpkgPathPlugin } from './plugins/unpkg-path-plugin';
+import { fetchPlugin } from './plugins/fetch-plugins';
 
 const App = () => {
     const ref = useRef<any>();
@@ -28,19 +29,17 @@ const App = () => {
 
     // Event handler for submit function
     const onClick = async () => {
-        console.log(input);
 
         // Don't transpile until service is initialised
         if (!ref.current) {
             return;
         }
 
-        //console.log(ref.current);
         const result = await ref.current.build({
             entryPoints: ['index.js'],
             bundle: true,
             write: false,
-            plugins: [unpkgPathPlugin()],
+            plugins: [unpkgPathPlugin(), fetchPlugin(input)],
             define: {
                 'process.env.NODE_ENV': '"production"',
                 global: 'window',
