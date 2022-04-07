@@ -48,11 +48,11 @@ export const fetchPlugin = (inputCode: string) => {
 
                 // Check to see if the module/file has already been fetched and if it is in the cache
                 // Return file immediately if it is in the cache
-                /*const cachedResult = await fileCache.getItem<esbuild.OnLoadResult>(args.path); // If result is null, it hasn't been fetched and then put in the cache
+                const cachedResult = await fileCache.getItem<esbuild.OnLoadResult>(args.path); // If result is null, it hasn't been fetched and then put in the cache
                 if (cachedResult) {
                     return cachedResult;
                 }
-                // If file is not in the cache*/
+                // If file is not in the cache
                 const { data, request } = await axios.get(args.path); // data now contains the text content of the index.js file of the desired package
 
                 const fileType = args.path.match(/.css$/) ? 'css' : 'jsx'; // If the file is a css file, use css loader otherwise default to jsx loader
