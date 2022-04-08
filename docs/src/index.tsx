@@ -12,16 +12,11 @@ const App = () => {
 
     // Initalise esbuild web assembly compiler
     const startService = async () => {
-        /*const service = await esbuild.startService({
-            worker: true,
-            wasmURL: '/esbuild.wasm'
-        });
-        //console.log(service); */
         ref.current = await esbuild.startService({
             worker: true,
-            wasmURL: '/esbuild.wasm'
+            wasmURL: 'https://unpkg.com/esbuild-wasm@0.8.27/esbuild.wasm'
         });
-    }
+    };
 
     useEffect(() => {
         startService();
