@@ -64,3 +64,8 @@ ORGANISATION ORGANISATION ORGANISATION OF FILES & EXPLANATION IN DOCUMENTATION--
 
 # Documentation
 [Team documentation (soon to be  public)](https://www.notion.so/sk-ledgerstream/Data-Source-Links-4e11bd0cf8664d7da6cbad8c9be30e7a)
+
+Branch `ts-transpile`:
+Docs are located in `docs` directory
+Built with typescript
+Later merging with the main react application
