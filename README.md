@@ -1,71 +1,69 @@
-# LedgerStream CLI
-## About product
+# Star Sailors Integration Repository
 
-## Dependencies
-Built on Node
-<!-- Look into py alternatives || (or) make python friendly for interactivity with other applications in DAO Jones -->
+Welcome to the Star Sailors Integration Repository! This repository contains the code for integrating various components of the Star Sailors project, including the Rust API, Ruby API, and Next.js frontend.
 
-Install dependencies:
-`yarn install`
-Or
-`npm install`
+## Repository Structure
 
-### Individual dependencies
-* Chalk
-* Figlet
-* Web3.js
+The repository is organized as follows:
 
-### Initialisation
-Variables at start:
-`account` -> User wallet
-`chain` -> What blockchain & layer
-
-# CLI/App flow
-1. User selects chain, inputs the wallet address they want to track
-<!-- Do we verify if the address is the correct for the selected chain?
--->
-2. CLI pulls information from relevant data source (STREAM)
-
-<!-- Let's look into pros & cons of anonymity vs inputting their account, authenticating it somehow etc -->
-
-<!--Action points
- KEYBASE
-TERMINAL
-GIFT
-CONTRIBUTORS
-JAZZ UP CLI -> animations, minigames (while waiting) etc
+```bash
+star-sailors/
+│ └── api.rb
+│ └── Gemfile
+├── src/
+│ ├── main.rs
+│ └── Cargo.toml
+├── frontend/ *submodule
+│ ├── pages/
+│ │ └── index.tsx
+│ └── package.json
+│ └── server/
+└── README.md
+```
 
 
-ORGANISATION ORGANISATION ORGANISATION OF FILES & EXPLANATION IN DOCUMENTATION-->
+- The `src` directory contains the Rust API.
+- The `root` directory contains the Ruby API for plugin retrieval and rust config.
+- The `frontend` submodule contains a NextJS application that mirrors the DSL Nodes frontend
 
-## Data Sources
-### Bitcoin/Litecoin
-(Non-NFT)
-* EnjinX
+## Running the APIs
 
-### Ethereum:
-* Etherscan
-* Ethplorer
-* Etherchain.org
-* Blockscout
-* EnjinX
+### Rust API
 
-### Polkadot
-* Subscan (Polkadot)
+To run the Rust API:
 
-### Solana
-* Solana.com BigDataProtocol
-* Solanalysis
-* Howrare.is
-* Solanafloor
+1. Ensure that you have Rust and Cargo installed on your system.
+2. Navigate to the `rust-api` directory.
+3. Run the following command to build and run the Rust API:
 
-### Cardano
-* Datahub.io -> Cardano
+   ```bash
+   cargo run
+    ```
 
-# Documentation
-[Team documentation (soon to be  public)](https://www.notion.so/sk-ledgerstream/Data-Source-Links-4e11bd0cf8664d7da6cbad8c9be30e7a)
+The Rust API will start running on http://localhost:8080.
 
-Branch `ts-transpile`:
-Docs are located in `docs` directory
-Built with typescript
-Later merging with the main react application
+### Ruby API
+To run the Ruby API:
+
+Ensure that you have Ruby installed on your system.
+
+Navigate to the ruby-api directory.
+
+Install the required dependencies by running:
+
+```bash
+bundle install
+
+ruby api.rb
+```
+
+# Long-Term Vision
+The goal of this repo is to integrate various scientific data analysis and visualization capabilities into an interactive platform -> namely, provide a way to add functionality to your Nodes server. The long-term vision includes:
+
+Enhancing the Rust API to provide additional functionalities and data processing capabilities.
+Expanding the Ruby API to support more advanced plugin management and customization options.
+Developing additional features and components for the Next.js frontend, such as interactive data visualizations and user collaboration tools.
+Integrating the Star Sailors project with the Nodes platform, enabling seamless sharing and collaboration on scientific projects.
+
+# Contributing
+Contributions to the Star Sailors Integration Repository are welcome! If you have any ideas, bug reports, or improvements, please open an issue or submit a pull request.
