@@ -1,0 +1,4 @@
+# This should be merged with plugins.toml file so it works across Ruby and Rust
+plugins:
+  - plugin_a
+  - plugin_b
